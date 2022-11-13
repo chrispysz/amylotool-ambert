@@ -26,8 +26,8 @@ def predictFull():
 
     try:
         sequence = request.json['sequence']
-        if (sequence == None or sequence == ""):
-            return jsonify(result = "No sequence provided")
+        if (sequence == "ping"):
+            return jsonify(result = "Service reached")
         result = predict_window(sequence)
         return jsonify(
             classification=str(result[0]),
