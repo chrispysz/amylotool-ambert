@@ -26,7 +26,7 @@ def predictFull():
 
     try:
         sequence = request.json['sequence']
-        if sequence == None:
+        if (sequence == None or sequence == ""):
             return "No sequence provided"
         result = predict_window(sequence)
         return jsonify(
