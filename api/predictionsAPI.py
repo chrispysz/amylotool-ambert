@@ -27,7 +27,7 @@ def predictFull():
     try:
         sequence = request.json['sequence']
         if (sequence == None or sequence == ""):
-            return "No sequence provided"
+            return jsonify(result = "No sequence provided")
         result = predict_window(sequence)
         return jsonify(
             classification=str(result[0]),
