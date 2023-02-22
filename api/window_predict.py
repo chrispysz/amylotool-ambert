@@ -42,7 +42,8 @@ def predict_window(seq):
                 predictions.append('0')
 
             seq_dict = {
-                "sequence": subseq,
+                "startIndex": i,
+                "endIndex": seq_cutoff+i,
                 "prediction": str(prediction[0][1])
             }
             seq_dicts.append(seq_dict)
@@ -51,8 +52,4 @@ def predict_window(seq):
 
     elapsed = time.process_time() - start
     logging.warn(msg="Prediction processed in "+str(elapsed)+" seconds")
-    if '1' in predictions:
-        return ("Positive", seq_dicts)
-
-    else:
-        return ("Negative", seq_dicts)
+    return (seq_dicts)

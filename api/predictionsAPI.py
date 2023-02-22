@@ -27,11 +27,10 @@ def predictFull():
     try:
         sequence = request.json['sequence']
         if (sequence == "ping"):
-            return jsonify(result = "Service reached")
+            return jsonify(results = "Service reached")
         result = predict_window(sequence)
         return jsonify(
-            classification=str(result[0]),
-            result=str(result[1])
+            results=str(result)
         )
     except Exception as e:
         return f"An Error Occurred: {e}"
