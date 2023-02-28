@@ -30,7 +30,7 @@ def predictFull():
             return jsonify(results = "Service reached")
         result = predict_window(sequence)
         return jsonify(
-            results=str(result)
+            results=result
         )
     except Exception as e:
         return f"An Error Occurred: {e}"
