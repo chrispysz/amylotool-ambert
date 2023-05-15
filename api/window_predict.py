@@ -1,12 +1,12 @@
-from transformers import BertForSequenceClassification, BertTokenizer
 import torch
 import logging
 import time
+from transformers import BertForSequenceClassification, BertTokenizer
 
 model = BertForSequenceClassification.from_pretrained("./models/AmBERT")
 tokenizer = BertTokenizer.from_pretrained("./models/tokenizer/")
 
-def predict_window(seq, model, tokenizer, seq_cutoff=39, threshold=0.5):
+def predict_window(seq, seq_cutoff=39, threshold=0.5):
     global model
     global tokenizer
 
