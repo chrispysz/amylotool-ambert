@@ -15,6 +15,8 @@ def predict_window(seq, seq_cutoff=39, threshold=0.5):
 
     if len(seq) > seq_cutoff:
         splits = len(seq) - seq_cutoff
+        start = time.time()
+        logging.info("Splitting sequence into %d windows of length %d" % (splits, seq_cutoff+1))
         for i in range(splits):
             subseq = seq[i:seq_cutoff+i+1]
             inputs = tokenizer(" ".join(subseq), return_tensors="pt")
@@ -28,7 +30,8 @@ def predict_window(seq, seq_cutoff=39, threshold=0.5):
                 "prediction": str(prediction[0][1])
             }
             seq_dicts.append(seq_dict)
-            logging.info(f"Processed {i+1}/{splits}")
 
-    logging.info("Prediction completed")
+        end = time.time()
+        logging.info("Prediction took %f seconds" % (end-start))
+
     return seq_dicts
